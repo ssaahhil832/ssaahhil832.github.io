@@ -1,68 +1,121 @@
-# OpenCLAW User Guide
+# 🚀 OpenCLAW User Guide
 
-Welcome to OpenCLAW! This comprehensive guide will help you get started with OpenCLAW.
+<p align="center">
+  <img src="https://img.shields.io/badge/Version-1.0.0-blue?style=for-the-badge&logo=version&color=00D4FF" alt="Version">
+  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge&color=22C55E" alt="License">
+  <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-purple?style=for-the-badge&color=8B5CF6" alt="Platform">
+  <img src="https://img.shields.io/badge/Open%20Source-100%25-orange?style=for-the-badge&color=FF6B00" alt="Open Source">
+</p>
 
 ---
 
-## What is OpenCLAW?
+> **OpenCLAW** (Open Command Line Automation Wizard) — Your ultimate automation companion for command-line workflows.
 
-**OpenCLAW** (Open Command Line Automation Wizard) is an open-source automation tool that simplifies complex command-line tasks. It provides a unified interface to automate workflows, manage system operations, and chain multiple commands together effortlessly.
+---
 
-### Why Use OpenCLAW?
+## 📋 Table of Contents
+
+1. [What is OpenCLAW?](#what-is-openclaw)
+2. [Why Use OpenCLAW?](#why-use-openclaw)
+3. [Features](#features)
+4. [Installation](#installation)
+5. [Usage](#usage)
+6. [Configuration](#configuration)
+7. [Folder Structure](#folder-structure)
+8. [Troubleshooting](#troubleshooting)
+9. [Contributing](#contributing)
+10. [License](#license)
+
+---
+
+## 🤖 What is OpenCLAW?
+
+OpenCLAW is an **open-source automation tool** that simplifies complex command-line tasks. It provides a unified interface to:
+
+- 🔄 Automate repetitive workflows
+- 🛠️ Manage system operations effortlessly
+- ⛓️ Chain multiple commands together
+- 📊 Monitor system health in real-time
+
+```javascript
+// Example: Simple automation
+const openclaw = require('openclaw');
+
+openclaw.init({
+  workflow: 'backup',
+  schedule: '0 2 * * *',
+  onComplete: (result) => console.log('✅ Backup complete!')
+});
+```
+
+---
+
+## ❓ Why Use OpenCLAW?
 
 | Problem | OpenCLAW Solution |
-|---------|----------------|
-| Repetitive terminal commands | Automate with single command |
-| Cross-platform scripts | Works on Windows, Linux, macOS |
-| Complex workflows | Chain commands visually |
-| Error handling | Built-in retry & logging |
-| Scheduling tasks | Schedule automate tasks |
-
-### What Can OpenCLAW Do?
-
-- 🔄 Automate repetitive system tasks
-- 📦 Bulk file operations
-- 🌐 Network monitoring & management
-- 🛠️ Development workflow automation
-- 📊 System health monitoring
-- 🔒 Backup & security operations
+|:------|:---------------|
+| 🤯 Repetitive terminal commands | ⚡ Automate with single command |
+| 🌍 Cross-platform scripts | 🪟 Works on Windows, macOS, Linux |
+| 📈 Complex workflows | 🎯 Visual workflow builder |
+| 🐛 Error handling | 🛡️ Built-in retry & logging |
+| ⏰ Scheduling tasks | 📅 Schedule automations easily |
 
 ---
 
-## Installation
+## ✨ Features
+
+<div align="center">
+
+| Feature | Description |
+|:--------|:-----------|
+| 🔄 **Workflow Automation** | Automate repetitive tasks with ease |
+| 📦 **Bulk Operations** | Process multiple files simultaneously |
+| 🌐 **Network Tools** | Monitor & manage network operations |
+| 🛠️ **Dev Workflows** | Streamline development processes |
+| 📊 **System Monitoring** | Real-time health dashboards |
+| 🔒 **Security** | Automated backup & security ops |
+
+</div>
+
+---
+
+## 📦 Installation
 
 ### Prerequisites
 
-- **Node.js** (v18 or higher)
-- **Git** installed
-- Terminal/Command Prompt access
+- ✅ **Node.js** (v18 or higher)
+- ✅ **Git** installed
+- ✅ Terminal access
 
 ---
 
-### Windows Installation
+### 🪟 Windows
 
 #### Option 1: Using npm (Recommended)
 
 ```powershell
-# Open Command Prompt or PowerShell
-
-# Install Node.js if not installed
+# 1. Install Node.js
 winget install OpenJS.NodeJS
 
-# Clone and install OpenCLAW
+# 2. Clone the repository
 git clone https://github.com/ssaahhil832/ssaahhil832.github.io.git
+
+# 3. Navigate to folder
 cd ssaahhil832.github.io/openclaw
+
+# 4. Install dependencies
 npm install
 
-# Verify installation
+# 5. Verify
 npm --version
 ```
 
 #### Option 2: Using Chocolatey
 
 ```powershell
-# Install Chocolatey first (run as Admin)
-Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -4ls12; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+# Run as Administrator
+Set-ExecutionPolicy Bypass -Scope Process -Force
+iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
 # Install OpenCLAW
 choco install openclaw
@@ -70,56 +123,45 @@ choco install openclaw
 
 ---
 
-### macOS Installation
+### 🍎 macOS
 
 ```bash
-# Open Terminal
-
-# Install Homebrew if not installed
+# 1. Install Homebrew (if needed)
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# Install Node.js
+# 2. Install Node.js
 brew install node
 
-# Clone and install OpenCLAW
+# 3. Clone & install
 git clone https://github.com/ssaahhil832/ssaahhil832.github.io.git
 cd ssaahhil832.github.io/openclaw
 npm install
 
-# Verify installation
+# 4. Verify
 npm --version
 ```
 
 ---
 
-### Linux Installation
+### 🐧 Linux
 
 #### Ubuntu/Debian
 
 ```bash
-# Open Terminal
-
-# Install Node.js
 curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
-# Clone and install OpenCLAW
 git clone https://github.com/ssaahhil832/ssaahhil832.github.io.git
 cd ssaahhil832.github.io/openclaw
 npm install
-
-# Verify installation
-node --version
 ```
 
 #### Fedora/RHEL
 
 ```bash
-# Install Node.js
 curl -fsSL https://rpm.nodesource.com/setup_18.x | sudo bash -
 sudo dnf install -y nodejs
 
-# Clone and install OpenCLAW
 git clone https://github.com/ssaahhil832/ssaahhil832.github.io.git
 cd ssaahhil832.github.io/openclaw
 npm install
@@ -136,12 +178,12 @@ npm install
 
 ---
 
-## Usage
+## 🚦 Usage
 
-### Running OpenCLAW
+### Basic Commands
 
 ```bash
-# Development mode (with hot reload)
+# Development mode (hot reload)
 npm run dev
 
 # Production mode
@@ -150,46 +192,42 @@ npm start
 
 # Show help
 npm run help
-```
 
-### Basic Commands
-
-```bash
-# Initialize a new project
+# Initialize new project
 openclaw init my-project
 
-# Run a specific workflow
+# Run workflow
 openclaw run backup
 
-# List available commands
+# List commands
 openclaw list
 
-# Get version
+# Check version
 openclaw --version
 ```
 
 ---
 
-## Configuration
+## ⚙️ Configuration
 
 ### Environment Variables
 
-Create a `.env` file in the `openclaw` folder:
+Create a `.env` file:
 
 ```env
-# API Keys
+# API Configuration
 OPENCLAW_API_KEY=your_api_key_here
 
 # Database
 DATABASE_URL=postgresql://localhost:5432/openclaw
 
 # Settings
-LOG_LEVEN=info
+LOG_LEVEL=info
 AUTO_SAVE=true
 THEME=dark
 ```
 
-### Workflow Configuration
+### Workflow Config
 
 Edit `openclaw.config.js`:
 
@@ -198,8 +236,8 @@ module.exports = {
   workflows: {
     backup: {
       enabled: true,
-      schedule: '0 2 * *),
-      steps: ['clean',u',compress', 'upload']
+      schedule: '0 2 * * *',
+      steps: ['clean', 'compress', 'upload']
     },
     deploy: {
       enabled: true,
@@ -207,7 +245,7 @@ module.exports = {
     }
   },
   settings: {
-*    logLevel: 'info',
+    logLevel: 'info',
     retryAttempts: 3,
     timeout: 30000
   }
@@ -216,15 +254,16 @@ module.exports = {
 
 ---
 
-## Folder Structure
+## 📂 Folder Structure
 
-```openclaw/
-└── 📁 src/
-│   └── 📁 rw/procs/        #Dumy commands
-│   └── 📁 workflows/    #Automation workflos
-│  └── 📁 utils/      #Utility functions
-└── 📁 config/    #Econfiguration
-└── 📁 dist/         #Eompiled output
+```
+openclaw/
+├── 📁 src/
+│   ├── 📁 commands/     # Custom commands
+│   ├── 📁 workflows/   # Automation workflows
+│   ├── 📁 utils/      # Utility functions
+│   └── 📁 config/     # Configuration
+├── 📁 dist/           # Compiled output
 ├── 📄 openclaw.config.js
 ├── 📄 package.json
 └── 📄 README.md
@@ -232,63 +271,66 @@ module.exports = {
 
 ---
 
-## Troubleshooting
+## 🔧 Troubleshooting
 
 | Issue | Cause | Solution |
-|-------|-------|---------|
-| `npm not found` | Node.js not installed | Install Node.js from nodejs.org |
+|:-----|:------|:--------|
+| `npm not found` | Node.js not installed | Install from [nodejs.org](https://nodejs.org) |
 | Permission denied | Admin rights needed | Run terminal as Administrator |
-| Port in use | Another process using port | Change port in config |
-| Build failed | Dependencies missing | Run `npm instal`` retry attempts: 3,
-timeout: 300000
-```
+| Port in use | Another process | Change port in config |
+| Build failed | Dependencies missing | Run `npm install` |
 
-### Common Fixes
+### Quick Fixes
 
 ```bash
 # Clear cache
 npm cache clean --force
 
-# Reinstall dependencies
-rm -f node_modules
+# Reinstall
+rm -rf node_modules
 npm install
 
-# Update OpenCLAW
+# Update
 npm update openclaw
-
-# Check for issues
-npm audit fix
 ```
 
 ---
 
-## Contributing
+## 🤝 Contributing
 
 We welcome contributions! Here's how to help:
 
-1. **Fork** the repository
-2. **Create** a feature branch (`git checkout -b feature/amazing`)
-3. **Make** your changes
-4. **Test** thoroughly
-5. **Commit** with descriptive messages
-6. **Push** to your fork
-7. **Submit** a Pull Request
+1. 🍴 **Fork** the repository
+2. 🌿 **Create** a feature branch (`git checkout -b feature/amazing`)
+3. 🔨 **Make** your changes
+4. ✅ **Test** thoroughly
+5. 📝 **Commit** with descriptive messages
+6. 🚀 **Push** to your fork
+7. 📥 **Submit** a Pull Request
 
 ---
 
-## License
+## 📄 License
 
-MIT License - See LICENSE file for details
-
----
-
-## Support
-
-- **GitHub Issues:** https://github.com/ssaahhil832/ssaahhil832.github.io/issues
-- **Email:** sorakayalapetasahilkhan@gmail.com
+MIT Licensed — See [LICENSE](LICENSE) file for details.
 
 ---
 
-*Built with ❤️ by Sahil Khan*
+## 🆘 Support
 
-**Version:** 1.0.0
+<p align="center">
+
+[![GitHub Issues](https://img.shields.io/badge/Issues-Open-blue?style=for-the-badge&logo=github)](https://github.com/ssaahhil832/ssaahhil832.github.io/issues)
+[![Email](https://img.shields.io/badge/Email-Contact-green?style=for-the-badge&logo=gmail)](mailto:sorakayalapetasahilkhan@gmail.com)
+
+</p>
+
+---
+
+<p align="center">
+  <strong>Built with ❤️ by <a href="https://github.com/ssaahhil832">Sahil Khan</a></strong>
+</p>
+
+<p align="center">
+  <img src="https://komarev.com/pills/?repo=openclaw&style=flat-square&color=00D4FF" alt="Profile views">
+</p>
