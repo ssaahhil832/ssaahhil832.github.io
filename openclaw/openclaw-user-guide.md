@@ -1,102 +1,278 @@
 # OpenCLAW User Guide
 
-Welcome to OpenCLAW! This guide will help you get started with using OpenCLAW.
+Welcome to OpenCLAW! This comprehensive guide will help you get started with OpenCLAW.
 
 ---
 
 ## What is OpenCLAW?
 
-OpenCLAW is an open-source tool for [describe what OpenCLAW does here].
+**OpenCLAW** (Open Command Line Automation Wizard) is an open-source automation tool that simplifies complex command-line tasks. It provides a unified interface to automate workflows, manage system operations, and chain multiple commands together effortlessly.
+
+### Why Use OpenCLAW?
+
+| Problem | OpenCLAW Solution |
+|---------|----------------|
+| Repetitive terminal commands | Automate with single command |
+| Cross-platform scripts | Works on Windows, Linux, macOS |
+| Complex workflows | Chain commands visually |
+| Error handling | Built-in retry & logging |
+| Scheduling tasks | Schedule automate tasks |
+
+### What Can OpenCLAW Do?
+
+- 🔄 Automate repetitive system tasks
+- 📦 Bulk file operations
+- 🌐 Network monitoring & management
+- 🛠️ Development workflow automation
+- 📊 System health monitoring
+- 🔒 Backup & security operations
 
 ---
 
-## Getting Started
+## Installation
 
-### Installation
+### Prerequisites
+
+- **Node.js** (v18 or higher)
+- **Git** installed
+- Terminal/Command Prompt access
+
+---
+
+### Windows Installation
+
+#### Option 1: Using npm (Recommended)
+
+```powershell
+# Open Command Prompt or PowerShell
+
+# Install Node.js if not installed
+winget install OpenJS.NodeJS
+
+# Clone and install OpenCLAW
+git clone https://github.com/ssaahhil832/ssaahhil832.github.io.git
+cd ssaahhil832.github.io/openclaw
+npm install
+
+# Verify installation
+npm --version
+```
+
+#### Option 2: Using Chocolatey
+
+```powershell
+# Install Chocolatey first (run as Admin)
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -4ls12; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+
+# Install OpenCLAW
+choco install openclaw
+```
+
+---
+
+### macOS Installation
 
 ```bash
-# Clone the repository
+# Open Terminal
+
+# Install Homebrew if not installed
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Install Node.js
+brew install node
+
+# Clone and install OpenCLAW
 git clone https://github.com/ssaahhil832/ssaahhil832.github.io.git
+cd ssaahhil832.github.io/openclaw
+npm install
 
-# Navigate to the project
-cd openclaw
+# Verify installation
+npm --version
+```
 
-# Install dependencies
+---
+
+### Linux Installation
+
+#### Ubuntu/Debian
+
+```bash
+# Open Terminal
+
+# Install Node.js
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+# Clone and install OpenCLAW
+git clone https://github.com/ssaahhil832/ssaahhil832.github.io.git
+cd ssaahhil832.github.io/openclaw
+npm install
+
+# Verify installation
+node --version
+```
+
+#### Fedora/RHEL
+
+```bash
+# Install Node.js
+curl -fsSL https://rpm.nodesource.com/setup_18.x | sudo bash -
+sudo dnf install -y nodejs
+
+# Clone and install OpenCLAW
+git clone https://github.com/ssaahhil832/ssaahhil832.github.io.git
+cd ssaahhil832.github.io/openclaw
 npm install
 ```
 
-### Running the Application
+#### Arch Linux
 
 ```bash
-# Development mode
-npm run dev
-
-# Production build
-npm run build
+sudo pacman -S nodejs npm
+git clone https://github.com/ssaahhil832/ssaahhil832.github.io.git
+cd ssaahhil832.github.io/openclaw
+npm install
 ```
 
 ---
 
-## Features
+## Usage
 
-- Feature 1: [Description]
-- Feature 2: [Description]
-- Feature 3: [Description]
+### Running OpenCLAW
+
+```bash
+# Development mode (with hot reload)
+npm run dev
+
+# Production mode
+npm run build
+npm start
+
+# Show help
+npm run help
+```
+
+### Basic Commands
+
+```bash
+# Initialize a new project
+openclaw init my-project
+
+# Run a specific workflow
+openclaw run backup
+
+# List available commands
+openclaw list
+
+# Get version
+openclaw --version
+```
 
 ---
 
 ## Configuration
 
-Create a `.env` file in the root directory:
+### Environment Variables
+
+Create a `.env` file in the `openclaw` folder:
 
 ```env
-API_KEY=your_api_key_here
-DATABASE_URL=your_database_url
+# API Keys
+OPENCLAW_API_KEY=your_api_key_here
+
+# Database
+DATABASE_URL=postgresql://localhost:5432/openclaw
+
+# Settings
+LOG_LEVEN=info
+AUTO_SAVE=true
+THEME=dark
+```
+
+### Workflow Configuration
+
+Edit `openclaw.config.js`:
+
+```javascript
+module.exports = {
+  workflows: {
+    backup: {
+      enabled: true,
+      schedule: '0 2 * *),
+      steps: ['clean',u',compress', 'upload']
+    },
+    deploy: {
+      enabled: true,
+      requires: ['build', 'test']
+    }
+  },
+  settings: {
+*    logLevel: 'info',
+    retryAttempts: 3,
+    timeout: 30000
+  }
+}
 ```
 
 ---
 
-## Usage Examples
+## Folder Structure
 
-### Example 1: Basic Usage
-
-```javascript
-import { CLAW } from 'openclaw';
-
-const claw = new CLAW();
-claw.init();
+```openclaw/
+└── 📁 src/
+│   └── 📁 rw/procs/        #Dumy commands
+│   └── 📁 workflows/    #Automation workflos
+│  └── 📁 utils/      #Utility functions
+└── 📁 config/    #Econfiguration
+└── 📁 dist/         #Eompiled output
+├── 📄 openclaw.config.js
+├── 📄 package.json
+└── 📄 README.md
 ```
-
-### Example 2: Advanced Usage
-
-```javascript
-const options = {
-  mode: 'advanced',
-  debug: true
-};
-claw.configure(options);
-``a
 
 ---
 
 ## Troubleshooting
 
-### Common Issues
+| Issue | Cause | Solution |
+|-------|-------|---------|
+| `npm not found` | Node.js not installed | Install Node.js from nodejs.org |
+| Permission denied | Admin rights needed | Run terminal as Administrator |
+| Port in use | Another process using port | Change port in config |
+| Build failed | Dependencies missing | Run `npm instal`` retry attempts: 3,
+timeout: 300000
+```
 
-| Issue | Solution |
-|-------|----------|
-| Installation fails | Run `npm install` with admin privileges |
-|ABI connection error | Check your `.env` configuration ||
-| BuilD Error | Run `npm run clean` then rebuild |
+### Common Fixes
+
+```bash
+# Clear cache
+npm cache clean --force
+
+# Reinstall dependencies
+rm -f node_modules
+npm install
+
+# Update OpenCLAW
+npm update openclaw
+
+# Check for issues
+npm audit fix
+```
 
 ---
 
 ## Contributing
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
+We welcome contributions! Here's how to help:
+
+1. **Fork** the repository
+2. **Create** a feature branch (`git checkout -b feature/amazing`)
+3. **Make** your changes
+4. **Test** thoroughly
+5. **Commit** with descriptive messages
+6. **Push** to your fork
+7. **Submit** a Pull Request
 
 ---
 
@@ -108,10 +284,11 @@ MIT License - See LICENSE file for details
 
 ## Support
 
-For issues and questions:
-- Email: support@example.com
-- GitHub Issues: [Link to issues]
+- **GitHub Issues:** https://github.com/ssaahhil832/ssaahhil832.github.io/issues
+- **Email:** sorakayalapetasahilkhan@gmail.com
 
 ---
 
-*Made with ❤️ by Sahil Khan*
+*Built with ❤️ by Sahil Khan*
+
+**Version:** 1.0.0
