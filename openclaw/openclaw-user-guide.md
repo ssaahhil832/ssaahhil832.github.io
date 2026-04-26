@@ -9,7 +9,7 @@
 
 ---
 
-> **OpenCLAW** (Open Command Line Automation Wizard) — Your ultimate automation companion for command-line workflows.
+> **OpenCLAW** (Open Command Line Automation Wizard) — Your ultimate automation companion for command-line workflows, powered by [OpenClaw](https://github.com/openclaw/openclaw).
 
 ---
 
@@ -30,21 +30,21 @@
 
 ## 🤖 What is OpenCLAW?
 
-OpenCLAW is an **open-source automation tool** that simplifies complex command-line tasks. It provides a unified interface to:
+**OpenCLAW** is an **open-source automation tool** built on top of [OpenClaw](https://github.com/openclaw/openclaw) — a personal AI assistant. It simplifies complex command-line tasks and provides:
 
 - 🔄 Automate repetitive workflows
-- 🛠️ Manage system operations effortlessly
+- 🛠️ Manage system operations effortlessly  
 - ⛓️ Chain multiple commands together
-- 📊 Monitor system health in real-time
+- 🤖 AI-powered automation using OpenClaw skills
 
 ```javascript
-// Example: Simple automation
+// Example: AI-powered automation
 const openclaw = require('openclaw');
 
-openclaw.init({
-  workflow: 'backup',
-  schedule: '0 2 * * *',
-  onComplete: (result) => console.log('✅ Backup complete!')
+await openclaw.init({
+  skill: 'automation-expert',
+  task: 'backup-files',
+  onComplete: (result) => console.log('✅ Done!')
 });
 ```
 
@@ -54,9 +54,9 @@ openclaw.init({
 
 | Problem | OpenCLAW Solution |
 |:------|:---------------|
-| 🤯 Repetitive terminal commands | ⚡ Automate with single command |
+| 🤯 Repetitive terminal commands | ⚡ Automate with AI assistance |
 | 🌍 Cross-platform scripts | 🪟 Works on Windows, macOS, Linux |
-| 📈 Complex workflows | 🎯 Visual workflow builder |
+| 📈 Complex workflows | 🎯 OpenClaw skill integration |
 | 🐛 Error handling | 🛡️ Built-in retry & logging |
 | ⏰ Scheduling tasks | 📅 Schedule automations easily |
 
@@ -68,9 +68,9 @@ openclaw.init({
 
 | Feature | Description |
 |:--------|:-----------|
-| 🔄 **Workflow Automation** | Automate repetitive tasks with ease |
+| 🔄 **Workflow Automation** | Automate tasks with AI power |
 | 📦 **Bulk Operations** | Process multiple files simultaneously |
-| 🌐 **Network Tools** | Monitor & manage network operations |
+| 🌐 **Channel Integrations** | Works with WhatsApp, Telegram, Discord, Slack & more |
 | 🛠️ **Dev Workflows** | Streamline development processes |
 | 📊 **System Monitoring** | Real-time health dashboards |
 | 🔒 **Security** | Automated backup & security ops |
@@ -85,7 +85,7 @@ openclaw.init({
 
 - ✅ **Node.js** (v18 or higher)
 - ✅ **Git** installed
-- ✅ Terminal access
+- ✅ Terminal/Command Prompt access
 
 ---
 
@@ -97,28 +97,31 @@ openclaw.init({
 # 1. Install Node.js
 winget install OpenJS.NodeJS
 
-# 2. Clone the repository
-git clone https://github.com/ssaahhil832/ssaahhil832.github.io.git
+# 2. Clone the OpenClaw repository
+git clone https://github.com/openclaw/openclaw.git
+cd openclaw
 
-# 3. Navigate to folder
-cd ssaahhil832.github.io/openclaw
-
-# 4. Install dependencies
+# 3. Install dependencies (pnpm recommended)
 npm install
+# OR use pnpm
+npm install -g pnpm
+pnpm install
 
-# 5. Verify
-npm --version
+# 4. Build the project
+pnpm build
+
+# 5. Start OpenClaw
+pnpm openclaw onboard --install-daemon
 ```
 
-#### Option 2: Using Chocolatey
+#### Option 2: Using PowerShell
 
 ```powershell
 # Run as Administrator
 Set-ExecutionPolicy Bypass -Scope Process -Force
-iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
-# Install OpenCLAW
-choco install openclaw
+# Quick install
+iwr https:// Install.ps1 -useb | iex
 ```
 
 ---
@@ -131,14 +134,17 @@ choco install openclaw
 
 # 2. Install Node.js
 brew install node
+# OR use pnpm
+brew install pnpm
 
-# 3. Clone & install
-git clone https://github.com/ssaahhil832/ssaahhil832.github.io.git
-cd ssaahhil832.github.io/openclaw
-npm install
+# 3. Clone & setup
+git clone https://github.com/openclaw/openclaw.git
+cd openclaw
+pnpm install
+pnpm build
 
-# 4. Verify
-npm --version
+# 4. Initialize
+pnpm openclaw onboard --install-daemon
 ```
 
 ---
@@ -148,12 +154,18 @@ npm --version
 #### Ubuntu/Debian
 
 ```bash
+# Install Node.js
 curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
-git clone https://github.com/ssaahhil832/ssaahhil832.github.io.git
-cd ssaahhil832.github.io/openclaw
-npm install
+# Install pnpm
+npm install -g pnpm
+
+# Clone & setup
+git clone https://github.com/openclaw/openclaw.git
+cd openclaw
+pnpm install
+pnpm build
 ```
 
 #### Fedora/RHEL
@@ -162,47 +174,67 @@ npm install
 curl -fsSL https://rpm.nodesource.com/setup_18.x | sudo bash -
 sudo dnf install -y nodejs
 
-git clone https://github.com/ssaahhil832/ssaahhil832.github.io.git
-cd ssaahhil832.github.io/openclaw
-npm install
+npm install -g pnpm
+git clone https://github.com/openclaw/openclaw.git
+cd openclaw
+pnpm install
+pnpm build
 ```
 
 #### Arch Linux
 
 ```bash
-sudo pacman -S nodejs npm
-git clone https://github.com/ssaahhil832/ssaahhil832.github.io.git
-cd ssaahhil832.github.io/openclaw
-npm install
+sudo pacman -S nodejs pnpm
+git clone https://github.com/openclaw/openclaw.git
+cd openclaw
+pnpm install
+pnpm build
 ```
 
 ---
 
 ## 🚦 Usage
 
+### Quick Start
+
+```bash
+# Clone the repo
+git clone https://github.com/openclaw/openclaw.git
+cd openclaw
+
+# Install dependencies
+pnpm install
+
+# Build
+pnpm build
+
+# Initialize (recommended)
+pnpm openclaw onboard --install-daemon
+
+# Start the daemon
+pnpm start
+```
+
 ### Basic Commands
 
 ```bash
 # Development mode (hot reload)
-npm run dev
+pnpm dev
 
 # Production mode
-npm run build
-npm start
+pnpm build
+pnpm start
 
-# Show help
-npm run help
+# List available skills
+openclaw skills list
 
-# Initialize new project
-openclaw init my-project
-
-# Run workflow
+# Use a skill
 openclaw run backup
 
-# List commands
-openclaw list
+# Check status
+openclaw status
 
-# Check version
+# Get version
 openclaw --version
 ```
 
@@ -212,10 +244,10 @@ openclaw --version
 
 ### Environment Variables
 
-Create a `.env` file:
+Create a `.env` file in the openclaw folder:
 
 ```env
-# API Configuration
+# OpenClaw Configuration
 OPENCLAW_API_KEY=your_api_key_here
 
 # Database
@@ -227,17 +259,17 @@ AUTO_SAVE=true
 THEME=dark
 ```
 
-### Workflow Config
+### Skill Configuration
 
-Edit `openclaw.config.js`:
+Edit `skills.config.js`:
 
 ```javascript
 module.exports = {
-  workflows: {
-    backup: {
+  skills: {
+    automation: {
       enabled: true,
       schedule: '0 2 * * *',
-      steps: ['clean', 'compress', 'upload']
+      actions: ['clean', 'compress', 'upload']
     },
     deploy: {
       enabled: true,
@@ -258,12 +290,11 @@ module.exports = {
 
 ```
 openclaw/
-├── 📁 src/
-│   ├── 📁 commands/     # Custom commands
-│   ├── 📁 workflows/   # Automation workflows
-│   ├── 📁 utils/      # Utility functions
-│   └── 📁 config/     # Configuration
-├── 📁 dist/           # Compiled output
+├── 📁 src/              # Core agent code
+├── 📁 extensions/       # Channel plugins
+├── 📁 skills/           # Automation skills
+├── 📁 docs/             # Documentation
+├── 📁 packages/         # Shared packages
 ├── 📄 openclaw.config.js
 ├── 📄 package.json
 └── 📄 README.md
@@ -275,23 +306,23 @@ openclaw/
 
 | Issue | Cause | Solution |
 |:-----|:------|:--------|
-| `npm not found` | Node.js not installed | Install from [nodejs.org](https://nodejs.org) |
+| `pnpm not found` | pnpm not installed | `npm install -g pnpm` |
 | Permission denied | Admin rights needed | Run terminal as Administrator |
 | Port in use | Another process | Change port in config |
-| Build failed | Dependencies missing | Run `npm install` |
+| Build failed | Dependencies missing | Run `pnpm install` |
 
 ### Quick Fixes
 
 ```bash
 # Clear cache
-npm cache clean --force
+pnpm store clean
 
 # Reinstall
 rm -rf node_modules
-npm install
+pnpm install
 
-# Update
-npm update openclaw
+# Update OpenClaw
+pnpm update openclaw
 ```
 
 ---
@@ -300,7 +331,7 @@ npm update openclaw
 
 We welcome contributions! Here's how to help:
 
-1. 🍴 **Fork** the repository
+1. 🍴 **Fork** the [repository](https://github.com/openclaw/openclaw)
 2. 🌿 **Create** a feature branch (`git checkout -b feature/amazing`)
 3. 🔨 **Make** your changes
 4. ✅ **Test** thoroughly
@@ -320,15 +351,16 @@ MIT Licensed — See [LICENSE](LICENSE) file for details.
 
 <p align="center">
 
-[![GitHub Issues](https://img.shields.io/badge/Issues-Open-blue?style=for-the-badge&logo=github)](https://github.com/ssaahhil832/ssaahhil832.github.io/issues)
-[![Email](https://img.shields.io/badge/Email-Contact-green?style=for-the-badge&logo=gmail)](mailto:sorakayalapetasahilkhan@gmail.com)
+[![GitHub Issues](https://img.shields.io/badge/Issues-Open-blue?style=for-the-badge&logo=github)](https://github.com/openclaw/openclaw/issues)
+[![Discord](https://img.shields.io/badge/Join-Discord-5865F2?style=for-the-badge&logo=discord)](https://discord.gg/openclaw)
+[![Website](https://img.shields.io/badge/Website-Visit-green?style=for-the-badge&logo=globe)](https://openclaw.ai)
 
 </p>
 
 ---
 
 <p align="center">
-  <strong>Built with ❤️ by <a href="https://github.com/ssaahhil832">Sahil Khan</a></strong>
+  <strong>Built with ❤️ by <a href="https://github.com/ssaahhil832">Sahil Khan</a> using <a href="https://github.com/openclaw/openclaw">OpenClaw</a></strong>
 </p>
 
 <p align="center">
