@@ -9,198 +9,92 @@
 
 ---
 
-> **OpenCLAW** (Open Command Line Automation Wizard) — Your ultimate automation companion for command-line workflows, powered by [OpenClaw](https://github.com/openclaw/openclaw).
+> **OpenCLAW** (Open Command Line Automation Wizard) — Built on [OpenClaw](https://github.com/openclaw/openclaw), the personal AI assistant that runs on your own devices.
 
 ---
 
 ## 📋 Table of Contents
 
-1. [What is OpenCLAW?](#what-is-openclaw)
-2. [Why Use OpenCLAW?](#why-use-openclaw)
-3. [Features](#features)
-4. [Installation](#installation)
-5. [Usage](#usage)
-6. [Configuration](#configuration)
-7. [Folder Structure](#folder-structure)
-8. [Troubleshooting](#troubleshooting)
-9. [Contributing](#contributing)
-10. [License](#license)
+1. [Prerequisites](#prerequisites)
+2. [Universal Installation](#universal-installation)
+3. [Platform-Specific Setup](#platform-specific-setup)
+4. [Common Errors](#common-errors)
+5. [Optional: Ollama Setup](#optional-ollama-setup)
+6. [Troubleshooting](#troubleshooting)
+7. [Contributing](#contributing)
 
 ---
 
-## 🤖 What is OpenCLAW?
+## ✅ Prerequisites
 
-**OpenCLAW** is an **open-source automation tool** built on top of [OpenClaw](https://github.com/openclaw/openclaw) — a personal AI assistant. It simplifies complex command-line tasks and provides:
+Before installing, make sure you have:
 
-- 🔄 Automate repetitive workflows
-- 🛠️ Manage system operations effortlessly  
-- ⛓️ Chain multiple commands together
-- 🤖 AI-powered automation using OpenClaw skills
+| Tool | Version | Required |
+|:-----|:--------|:---------|
+| **Node.js** | v20+ recommended | ✅ Yes |
+| **Git** | Latest | ✅ Yes |
+| **pnpm** | Latest | ✅ Yes (IMPORTANT) |
 
-```javascript
-// Example: AI-powered automation
-const openclaw = require('openclaw');
+---
 
-await openclaw.init({
-  skill: 'automation-expert',
-  task: 'backup-files',
-  onComplete: (result) => console.log('✅ Done!')
-});
+## 🔥 UNIVERSAL METHOD (Works on All Platforms)
+
+### Step 1: Clone the repo
+
+```bash
+git clone https://github.com/openclaw/openclaw.git
+cd openclaw
+```
+
+### Step 2: Install pnpm globally
+
+```bash
+npm install -g pnpm
+```
+
+### Step 3: Install dependencies
+
+```bash
+pnpm install
+```
+
+### Step 4: Run the project
+
+```bash
+pnpm dev
 ```
 
 ---
 
-## ❓ Why Use OpenCLAW?
+## 🪟 Platform-Specific Setup
 
-| Problem | OpenCLAW Solution |
-|:------|:---------------|
-| 🤯 Repetitive terminal commands | ⚡ Automate with AI assistance |
-| 🌍 Cross-platform scripts | 🪟 Works on Windows, macOS, Linux |
-| 📈 Complex workflows | 🎯 OpenClaw skill integration |
-| 🐛 Error handling | 🛡️ Built-in retry & logging |
-| ⏰ Scheduling tasks | 📅 Schedule automations easily |
+### ⚠️ IMPORTANT: Choose Your Method
 
----
-
-## ✨ Features
-
-<div align="center">
-
-| Feature | Description |
-|:--------|:-----------|
-| 🔄 **Workflow Automation** | Automate tasks with AI power |
-| 📦 **Bulk Operations** | Process multiple files simultaneously |
-| 🌐 **Channel Integrations** | Works with WhatsApp, Telegram, Discord, Slack & more |
-| 🛠️ **Dev Workflows** | Streamline development processes |
-| 📊 **System Monitoring** | Real-time health dashboards |
-| 🔒 **Security** | Automated backup & security ops |
-
-</div>
+| Method | Status | Notes |
+|:-------|:-------|:------|
+| Windows CMD | 😐 Unstable | Not recommended for heavy builds |
+| **Windows + WSL** | ✅ BEST | Recommended for Windows users |
+| **Linux** | ✅ BEST | Full support |
+| **macOS** | ✅ BEST | Full support |
 
 ---
 
-## 📦 Installation
+### 🪟 Windows (NOT Recommended)
 
-### Prerequisites
+> ❌ **Problems with Windows CMD:**
+> - Build stuck (tsdown issue)
+> - File linking issues  
+> - Slow node_modules
 
-- ✅ **Node.js** (v18 or higher)
-- ✅ **Git** installed
-- ✅ Terminal/Command Prompt access
-
----
-
-### 🪟 Windows
-
-#### Option 1: Using npm (Recommended)
+**If you MUST use Windows CMD:**
 
 ```powershell
-# 1. Install Node.js
-winget install OpenJS.NodeJS
-
-# 2. Clone the OpenClaw repository
-git clone https://github.com/openclaw/openclaw.git
-cd openclaw
-
-# 3. Install dependencies (pnpm recommended)
-npm install
-# OR use pnpm
-npm install -g pnpm
-pnpm install
-
-# 4. Build the project
-pnpm build
-
-# 5. Start OpenClaw
-pnpm openclaw onboard --install-daemon
-```
-
-#### Option 2: Using PowerShell
-
-```powershell
-# Run as Administrator
-Set-ExecutionPolicy Bypass -Scope Process -Force
-
-# Quick install
-iwr https:// Install.ps1 -useb | iex
-```
-
----
-
-### 🍎 macOS
-
-```bash
-# 1. Install Homebrew (if needed)
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-# 2. Install Node.js
-brew install node
-# OR use pnpm
-brew install pnpm
-
-# 3. Clone & setup
-git clone https://github.com/openclaw/openclaw.git
-cd openclaw
-pnpm install
-pnpm build
-
-# 4. Initialize
-pnpm openclaw onboard --install-daemon
-```
-
----
-
-### 🐧 Linux
-
-#### Ubuntu/Debian
-
-```bash
-# Install Node.js
-curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-sudo apt-get install -y nodejs
-
-# Install pnpm
-npm install -g pnpm
-
-# Clone & setup
-git clone https://github.com/openclaw/openclaw.git
-cd openclaw
-pnpm install
-pnpm build
-```
-
-#### Fedora/RHEL
-
-```bash
-curl -fsSL https://rpm.nodesource.com/setup_18.x | sudo bash -
-sudo dnf install -y nodejs
-
-npm install -g pnpm
-git clone https://github.com/openclaw/openclaw.git
-cd openclaw
-pnpm install
-pnpm build
-```
-
-#### Arch Linux
-
-```bash
-sudo pacman -S nodejs pnpm
-git clone https://github.com/openclaw/openclaw.git
-cd openclaw
-pnpm install
-pnpm build
-```
-
----
-
-## 🚦 Usage
-
-### Quick Start
-
-```bash
 # Clone the repo
 git clone https://github.com/openclaw/openclaw.git
 cd openclaw
+
+# Install pnpm
+npm install -g pnpm
 
 # Install dependencies
 pnpm install
@@ -208,128 +102,204 @@ pnpm install
 # Build
 pnpm build
 
-# Initialize (recommended)
-pnpm openclaw onboard --install-daemon
-
-# Start the daemon
-pnpm start
-```
-
-### Basic Commands
-
-```bash
-# Development mode (hot reload)
+# Run
 pnpm dev
+```
 
-# Production mode
-pnpm build
-pnpm start
+**⚠️ If stuck, try:**
 
-# List available skills
-openclaw skills list
-
-# Use a skill
-openclaw run backup
-
-# Check status
-openclaw status
-
-# Get version
-openclaw --version
+```powershell
+set TS_NODE_TRANSPILE_ONLY=1
+pnpm dev
 ```
 
 ---
 
-## ⚙️ Configuration
+### ✅ Windows + WSL (BEST for Windows) 🔥
 
-### Environment Variables
+#### Step 1: Install WSL
 
-Create a `.env` file in the openclaw folder:
-
-```env
-# OpenClaw Configuration
-OPENCLAW_API_KEY=your_api_key_here
-
-# Database
-DATABASE_URL=postgresql://localhost:5432/openclaw
-
-# Settings
-LOG_LEVEL=info
-AUTO_SAVE=true
-THEME=dark
+```powershell
+wsl --install
 ```
 
-### Skill Configuration
+#### Step 2: Open Ubuntu terminal
 
-Edit `skills.config.js`:
-
-```javascript
-module.exports = {
-  skills: {
-    automation: {
-      enabled: true,
-      schedule: '0 2 * * *',
-      actions: ['clean', 'compress', 'upload']
-    },
-    deploy: {
-      enabled: true,
-      requires: ['build', 'test']
-    }
-  },
-  settings: {
-    logLevel: 'info',
-    retryAttempts: 3,
-    timeout: 30000
-  }
-}
-```
-
----
-
-## 📂 Folder Structure
-
-```
-openclaw/
-├── 📁 src/              # Core agent code
-├── 📁 extensions/       # Channel plugins
-├── 📁 skills/           # Automation skills
-├── 📁 docs/             # Documentation
-├── 📁 packages/         # Shared packages
-├── 📄 openclaw.config.js
-├── 📄 package.json
-└── 📄 README.md
-```
-
----
-
-## 🔧 Troubleshooting
-
-| Issue | Cause | Solution |
-|:-----|:------|:--------|
-| `pnpm not found` | pnpm not installed | `npm install -g pnpm` |
-| Permission denied | Admin rights needed | Run terminal as Administrator |
-| Port in use | Another process | Change port in config |
-| Build failed | Dependencies missing | Run `pnpm install` |
-
-### Quick Fixes
+#### Step 3: Install Node.js
 
 ```bash
-# Clear cache
+sudo apt update
+sudo apt install nodejs npm -y
+```
+
+**Upgrade to Node.js v20:**
+
+```bash
+sudo npm install -g n
+sudo n 20
+```
+
+#### Step 4: Install pnpm
+
+```bash
+npm install -g pnpm
+```
+
+#### Step 5: Clone repo INSIDE WSL
+
+```bash
+cd ~
+git clone https://github.com/openclaw/openclaw.git
+cd openclaw
+```
+
+#### Step 6: Install & Run
+
+```bash
+pnpm install
+pnpm dev
+```
+
+---
+
+### 🐧 Linux (Ubuntu / Debian)
+
+#### Step 1: Install dependencies
+
+```bash
+sudo apt update
+sudo apt install git nodejs npm -y
+```
+
+**Upgrade to Node.js v20:**
+
+```bash
+sudo npm install -g n
+sudo n 20
+```
+
+#### Step 2: Install pnpm
+
+```bash
+npm install -g pnpm
+```
+
+#### Step 3: Clone & Run
+
+```bash
+git clone https://github.com/openclaw/openclaw.git
+cd openclaw
+
+pnpm install
+pnpm dev
+```
+
+---
+
+### 🍎 macOS
+
+#### Step 1: Install Homebrew
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+#### Step 2: Install Node.js & Git
+
+```bash
+brew install node git
+```
+
+#### Step 3: Install pnpm
+
+```bash
+npm install -g pnpm
+```
+
+#### Step 4: Clone & Run
+
+```bash
+git clone https://github.com/openclaw/openclaw.git
+cd openclaw
+
+pnpm install
+pnpm dev
+```
+
+---
+
+## 🔗 Optional: Ollama Setup (Local AI)
+
+Ollama provides local AI capabilities for OpenClaw.
+
+### Install Ollama
+
+```bash
+# For macOS/Linux
+curl -fsSL https://ollama.ai/install.sh | sh
+
+# For Windows (WSL)
+wsl -s
+curl -fsSL https://ollama.ai/install.sh | sh
+```
+
+### Use Ollama with OpenClaw
+
+```bash
+# Run a model
+ollama run llama3
+
+# Connect in OpenClaw config
+```
+
+---
+
+## 🧨 Common Errors & Solutions
+
+| Error | Cause | Solution |
+|:------|:------|:--------|
+| `node not found` | Node.js not installed | Install Node.js v20+ |
+| `json5 missing` | npm install incomplete | Use `pnpm install` instead |
+| Build stuck (`tsdown`) | Windows issue | Use WSL |
+| Slow copy | Copying node_modules | Don't copy node_modules, run pnpm install |
+
+### Quick Fix Commands
+
+```bash
+# Fix pnpm issues
 pnpm store clean
 
-# Reinstall
+# Reinstall everything
 rm -rf node_modules
 pnpm install
 
-# Update OpenClaw
-pnpm update openclaw
+# If stuck on Windows
+set TS_NODE_TRANSPILE_ONLY=1
+pnpm dev
 ```
+
+---
+
+## 📊 Recommended Setup Summary
+
+| Your Platform | Use This |
+|:-------------|:---------|
+| Windows 10/11 | **WSL + Ubuntu** |
+| Linux (any) | Direct terminal |
+| macOS | Terminal |
+| Windows 11 + Docker | Docker container |
+
+---
+
+## 🎯 My Recommendation
+
+> **Use: Windows + WSL + pnpm**
+> 
+> This is how professional developers run this type of project. WSL gives you Linux power while keeping Windows.
 
 ---
 
 ## 🤝 Contributing
-
-We welcome contributions! Here's how to help:
 
 1. 🍴 **Fork** the [repository](https://github.com/openclaw/openclaw)
 2. 🌿 **Create** a feature branch (`git checkout -b feature/amazing`)
@@ -343,7 +313,7 @@ We welcome contributions! Here's how to help:
 
 ## 📄 License
 
-MIT Licensed — See [LICENSE](LICENSE) file for details.
+MIT Licensed
 
 ---
 
@@ -361,8 +331,4 @@ MIT Licensed — See [LICENSE](LICENSE) file for details.
 
 <p align="center">
   <strong>Built with ❤️ by <a href="https://github.com/ssaahhil832">Sahil Khan</a> using <a href="https://github.com/openclaw/openclaw">OpenClaw</a></strong>
-</p>
-
-<p align="center">
-  <img src="https://komarev.com/pills/?repo=openclaw&style=flat-square&color=00D4FF" alt="Profile views">
 </p>
